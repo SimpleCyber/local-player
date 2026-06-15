@@ -86,6 +86,10 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     if (core.media.current) core.media.current.volume = core.s.volume;
   }, [core.s.volume]);
 
+  useEffect(() => {
+    document.title = track ? `${core.playing ? "▶ " : ""}${track.title} | Melodia` : "Melodia - Local Music & Video";
+  }, [track, core.playing]);
+
   return (
     <Ctx.Provider value={{
       ...core, ...pb, track,
