@@ -87,7 +87,7 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
   }, [core.s.volume]);
 
   useEffect(() => {
-    document.title = track ? `${core.playing ? "▶ " : ""}${track.title} | Melodia` : "Melodia - Local Music & Video";
+    document.title = track ? `${core.playing ? "" : ""}${track.title} | Melodia` : "Melodia - Local Music & Video";
   }, [track, core.playing]);
 
   return (

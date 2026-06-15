@@ -1,17 +1,20 @@
 "use client";
-import { Play, Search, X, Shuffle } from "lucide-react";
+import { Play, Search, X, Shuffle, Folder } from "lucide-react";
 import { usePlayer } from "../../context/PlayerContext";
 import { getColors, ACCENT } from "../../lib/utils";
 import { Track } from "../../types";
 
-export default function Header({ title, filtered, query, setQuery }: { title: string; filtered: Track[]; query: string; setQuery: object }) {
+export default function Header({ title, filtered, query, setQuery, isFolder }: { title: string; filtered: Track[]; query: string; setQuery: object; isFolder?: boolean }) {
   const { s, setS, playId } = usePlayer();
   const c = getColors(s.theme === "dark");
 
   return (
     <header style={{ borderBottom: `1px solid ${c.border}` }} className="flex items-center gap-4 px-6 py-4">
       <div className="flex-1 min-w-0">
-        <h1 style={{ color: c.txt }} className="text-[22px] font-bold tracking-tight">{title}</h1>
+        <h1 style={{ color: c.txt }} className="text-[22px] font-bold tracking-tight flex items-center gap-2">
+            {/* {isFolder && <Folder size={22} style={{ color: c.txt3 }} className="flex-shrink-0" />} */}
+            {title}
+          </h1>
         <p style={{ color: c.txt3 }} className="text-xs mt-0.5">
           {filtered.length} track{filtered.length !== 1 ? "s" : ""}
           {s.view === "library" && ` · ${s.folders.length} folder${s.folders.length !== 1 ? "s" : ""}`}
