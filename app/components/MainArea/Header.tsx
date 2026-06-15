@@ -3,6 +3,7 @@ import { Play, Search, X, Shuffle, Folder } from "lucide-react";
 import { usePlayer } from "../../context/PlayerContext";
 import { getColors, ACCENT } from "../../lib/utils";
 import { Track } from "../../types";
+import GitHubRepoButton from "./github";
 
 export default function Header({ title, filtered, query, setQuery, isFolder }: { title: string; filtered: Track[]; query: string; setQuery: object; isFolder?: boolean }) {
   const { s, setS, playId } = usePlayer();
@@ -44,6 +45,8 @@ export default function Header({ title, filtered, query, setQuery, isFolder }: {
         onClick={() => setS(p => ({ ...p, shuffle: !p.shuffle }))} title="Shuffle">
         <Shuffle size={15} />
       </button>
+          <GitHubRepoButton t={c} />
+
     </header>
   );
 }
